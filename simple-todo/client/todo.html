@@ -28,6 +28,8 @@
 
 <template name="todo">
   <li>
-  	{{ title }} <button class="delete">Remove</button>
+  	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
+  	<span class="text">{{ title }}</span>
+  	<button class="delete">Remove</button>
   </li>
 </template>

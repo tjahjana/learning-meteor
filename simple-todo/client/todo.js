@@ -30,6 +30,12 @@ Template.body.events ({
 //todo instead of body because it is outside body
 Template.todo.events ({
 
+	//check function
+	'click .toggle-checked': function() {
+		Todos.update(this._id, {$set: {checked: !this.checked}});
+		//inside set is the property which we will modify -> the value of checked: flip it
+	},
+
 	//delete function
 	'click .delete': function() {
 		Todos.remove(this._id);
