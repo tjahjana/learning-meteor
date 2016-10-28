@@ -3,14 +3,26 @@
 </head>
 
 <body>
-  <h1>It's a simple todo list!</h1>
 
-  <ul>
-  	<!-- For every single item in todos, is going to output the template todo -->
-  	{{#each todos }}
-    	{{> todo}}
-    {{/each}} <!-- close loop -->
-  </ul>
+	<div class="container">
+		<header>
+			<h1>It's a simple todo list!</h1>
+
+			<form class="new-task">
+				<!-- name = collection name -->
+				<input type="text" name="title" placeholder="A new task">
+				<input type="submit" value="submit">
+			</form>
+		</header>
+
+  	<ul>
+  		<!-- For every single item in todos, is going to output the template todo -->
+  		{{#each todos }}
+    		{{> todo}}
+    	{{/each}} <!-- close loop -->
+  	</ul>
+
+	</div>
   
 </body>
 
