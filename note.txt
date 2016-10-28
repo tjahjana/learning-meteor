@@ -9,3 +9,9 @@ meteor create app-name
 Run app:
 (1) cd app-name
 (2) meteor
+
+MongoDB:
+in console:
+	meteor mongo
+	db.collectionsname.insert({ title: "Text", createdAt: new Date() }); //just javascript
+this collection will be shown on our page
