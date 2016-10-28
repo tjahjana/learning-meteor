@@ -26,3 +26,14 @@ Template.body.events ({
 
 	}
 });
+
+//todo instead of body because it is outside body
+Template.todo.events ({
+
+	//delete function
+	'click .delete': function() {
+		Todos.remove(this._id);
+		//id automatically asigning by mongodb, which can be accessed by _id
+		//this -> access to what we click
+	}
+});
