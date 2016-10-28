@@ -20,9 +20,15 @@ Template.hello.events({
 });*/
 
 if(Meteor.isClient) {
+	Template.body.helpers ({
+		//Type an object, with 'todos' as key and the value in []
+		todos: [
+			{ title: "Task #1" } //Array with single object
+		]
+	});
 
 }
 
 if(Meteor.isServer) {
-	
+
 }
