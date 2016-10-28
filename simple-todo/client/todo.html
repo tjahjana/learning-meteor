@@ -5,10 +5,11 @@
 <body>
   <h1>It's a simple todo list!</h1>
 
-  {{ todos }}
-
   <ul>
-    {{> todo}}
+  	<!-- For every single item in todos, is going to output the template todo -->
+  	{{#each todos }}
+    	{{> todo}}
+    {{/each}} <!-- close loop -->
   </ul>
   
 </body>
