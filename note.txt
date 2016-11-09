@@ -17,3 +17,8 @@ in console:
 this collection will be shown on our page
 
 Meteor combine front-end and back-end together. So don't mind to tell frontend to redisplay the content.
+
+Todo:
+Add Bootstrap package
+meteor add mizzao:bootstrap-3
+meteor add underscore
