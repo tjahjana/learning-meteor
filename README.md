@@ -11,14 +11,13 @@ tasklist
 Include registration and login function
 
 ---------------------------
-Meteor instalation:
-
+###### Meteor instalation:
 (1) Instal node.js
 (2) curl https://install.meteor.com/ | sh
 
-Create app:
+###### Create app:
 meteor create app-name
 
-Run app:
+###### Run app:
 (1) cd app-name
 (2) meteor
