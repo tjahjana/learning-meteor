@@ -3,8 +3,16 @@ Todos = new Mongo.Collection('todos');
 
 Template.body.helpers ({
 	todos: function() {
-		//Access database
-		return Todos.find(); //Display database record in our templates
+		//if(Session.get('hideFinished')) {
+			//return Todos.find({checked: {$ne: true}});
+		//} else {
+			//Access database
+			return Todos.find(); //Display database record in our templates
+		//}
+	},
+
+	hideFinished: function() {
+		return Session.get('hideFinished');
 	}
 });
  
@@ -24,6 +32,10 @@ Template.body.events ({
 		return false;
 		//If not return false, the page will do refresh because of submit event.
 
+	},
+
+	'change .hide-finished': function(event) {
+		Session.set('hideFinished', event.target.checked);
 	}
 });
 
