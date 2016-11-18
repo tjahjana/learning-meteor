@@ -1,22 +1,33 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+Tasks = new Mongo.Collection('tasks');
 
-import './main.html';
+if (Meteor.isClient){
+	Meteor.subscribe('tasks');
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+	Template.tasks.helpers({
+		tasks: function(){
+			return Tasks.find({}, {sort: {createdt: -1}});
+		}
+	});
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+	Template.tasks.events({
+		"submit .add-task": function(event) {
+			var name = event.target.name.value;
+			//console.log(name);
+			Meteor.call('addTask', name);
+		
+			
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+			event.target.name.value = '';
+			
+			return false;
+		},
+		"click .delete-task": function(event){
+			if(confirm('Delete Tasks')){
+				Meteor.call('deleteTask', this._id);
+		}
+		return false;
+	}
+	});
+
+}
+

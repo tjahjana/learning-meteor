@@ -1,5 +1,26 @@
-import { Meteor } from 'meteor/meteor';
+Tasks = new Mongo.Collection('tasks');
 
-Meteor.startup(() => {
-  // code to run on server at startup
+if (Meteor.isServer){
+Meteor.publish('tasks', function(){
+	return Tasks.find({userId: this.userId});
+});
+
+}
+
+Meteor.methods ({
+	addTask: function(name){
+		if(!Meteor.userId()){
+			throw new Meteor.Error('No Acsess!')
+		}
+
+		Tasks.insert({
+				name: name,
+				createdAt: new Date(),
+				userId: Meteor.userId()
+			});
+	},
+	deleteTask: function(tasksId){
+		Tasks.remove(tasksId);
+	}
+
 });

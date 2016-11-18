@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "tasklist",
   "private": true,
   "scripts": {
     "start": "meteor run"
