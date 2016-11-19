@@ -10,3 +10,9 @@ Todo:
 Add Bootstrap package
 meteor add mizzao:bootstrap-3
 meteor add underscore
+
+Login:
+	Add package: meteor add accounts-ui accounts-password
+	Add loginButtons
+	run meteor
+	registrieren: user@mail.com password: 123456
