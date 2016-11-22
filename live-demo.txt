@@ -8,6 +8,10 @@ client/todo.html > body
  {{> todo}}
 </ul>
 
+<template name="todo">
+   <li>Test list</li>
+ </template>
+
 client/todo.js
 Template.body.helpers ({
 	todos: [
