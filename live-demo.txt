@@ -1,0 +1,16 @@
+1. Add mongoDB in server & client
+Todos = new Mongo.Collection('todos');
+
+2. array
+client/todo.html > body
+{{ todos }}
+<ul>
+ {{> todo}}
+</ul>
+
+client/todo.js
+Template.body.helpers ({
+	todos: [
+		{ title: "Task #1" }
+	]
+});

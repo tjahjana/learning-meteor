@@ -16,3 +16,7 @@ Login:
 	Add loginButtons
 	run meteor
 	registrieren: user@mail.com password: 123456
+
+More secure:
+	in client -> package called insecure, in production -> remove that package, and use meteor methods
+	$ meteor remove insecure
