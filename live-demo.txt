@@ -14,3 +14,119 @@ Template.body.helpers ({
 		{ title: "Task #1" }
 	]
 });
+
+3. todo als text ausgeben (client/todo.html)
+  	<ul>
+  		{{#each todos }}
+    		{{> todo}}
+    	{{/each}}
+  	</ul>
+
+4. display each todos in array
+client/todo.html außer body
+<template name="todo">
+	<li>{{ title }}</li>
+</template>
+
+client/todo.js
+	todos: [
+		{ title: "Task #1" },
+		{ title: "Task #2" },
+		{ title: "Task number 3" }
+	]
+
+5. use mongo collection
+todos: function() {
+	return Todos.find();
+}
+
+6. in console:
+meteor mongo
+db.todos.insert({ title: "Text", createdAt: new Date() });
+
+7. add form
+<div class="container">
+		<header>
+			<h1>It's a simple todo list!</h1>
+			<form class="new-task">
+				<input type="text" name="title" placeholder="A new task">
+				<input type="submit" value="submit">
+			</form>
+		</header>
+</div>
+
+8. add input database and display it using forms
+client/todo.js
+Template.body.events ({
+	'submit .new-task': function(event) {
+		var title = event.target.title.value;
+		Todos.insert ({
+			title: title,
+			createdAt: new Date()
+		});
+		event.target.title.value = "";
+		return false;
+	}
+});
+
+9. delete function
+todo.html
+<template name="todo">
+  <li>
+  	{{ title }} <button class="delete">Remove</button>
+  </li>
+ </template>
+
+todo.js
+ Template.todo.events ({
+	'click .delete': function() {
+		Todos.remove(this._id);
+	}
+});
+
+10. add checkbox and save it
+todo.css
+li {
+	list-style: none;
+}
+
+todo.html
+<template name="todo">
+  <li>
+  	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
+  	<span class="text">{{ title }}</span>
+  	<button class="delete">Remove</button>
+  </li>
+</template>
+
+todo.js > todo.events
+	'click .toggle-checked': function() {
+		Todos.update(this._id, {$set: {checked: !this.checked}});
+	},
+
+11. grey color
+todo.css
+li.checked {
+	text-decoration: line-through;
+	color: #808080;
+}
+
+todo.html
+<template name="todo">
+<li class="{{#if checked}} checked {{/if}}">
+
+12. in console
+meteor add accounts-ui accounts-password
+
+13. Add login form
+todo.html >body >container
+{{> loginButtons}}
+
+14. Add current user
+todo.html >container
+{{#if currentUser}}
+	form...
+	ul..
+{{else}}
+  <p>Please log in!</p>
+{{/if}}
